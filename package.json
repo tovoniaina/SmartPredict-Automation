@@ -1,0 +1,23 @@
+{
+  "name": "cypresssmartpredict",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "runHeaded": "./node_modules/.bin/cypress run --headed --browser chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://gitlab.com/a7940/SmartPredict-automation.git"
+  },
+  "author": "Aristide",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/a7940/SmartPredict-automation/issues"
+  },
+  "homepage": "https://gitlab.com/a7940/SmartPredict-automation#readme",
+  "devDependencies": {
+    "cypress": "^9.2.1"
+  }
+}
