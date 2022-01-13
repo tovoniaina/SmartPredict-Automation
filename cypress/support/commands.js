@@ -1,3 +1,5 @@
+
+//Custom command to save and restore localStorage
 let LOCAL_STORAGE_MEMORY = {};
 
 Cypress.Commands.add("saveLocalStorage", () => {
@@ -11,3 +13,17 @@ Cypress.Commands.add("restoreLocalStorage", () => {
         localStorage.setItem(key, LOCAL_STORAGE_MEMORY[key]);
     });
 });
+
+
+//Custom command to login on SmartPredict
+Cypress.Commands.add('loginSmartPredict', () => {
+    cy.request({
+        url: "https://dev-gateway.smartpredict.cloud",
+        method: 'POST',
+        body: {
+            query: "mutation signIn($email: String!, $password: String!) {\n  signIn(input: {email: $email, password: $password}) {\n    accessToken\n    slug\n    confirmed\n    __typename\n  }\n}\n",
+            variables: { email: "aristide@smartpredict.ai", password: "bq4X7kdy@@" }
+        }
+    }).then(res => localStorage.setItem('token', res.body.data.signIn.accessToken));
+    cy.visit('https://dev-client-front.smartpredict.cloud/')
+})
