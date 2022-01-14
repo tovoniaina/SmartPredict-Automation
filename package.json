@@ -19,6 +19,6 @@
   },
   "homepage": "https://gitlab.com/a7940/SmartPredict-automation#readme",
   "devDependencies": {
-    "cypress": "^9.2.1"
+    "cypress": "^8.3.0"
   }
 }

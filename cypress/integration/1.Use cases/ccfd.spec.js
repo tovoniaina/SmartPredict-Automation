@@ -60,7 +60,7 @@ describe('Testing Credit card fraud detection use case', () => {
     });
 
     it('It checks if the run of the project is finished', () => {
-        cy.get('.jss743').should('have.css', 'background-color', 'rgb(255, 204, 10)')
+        cy.get('.jss744').should('have.css', 'background-color', 'rgb(255, 204, 10)')
         cy.wait(2000)
     });
 
@@ -71,7 +71,26 @@ describe('Testing Credit card fraud detection use case', () => {
 
     it('Running default request on predict space', () => {
         cy.get('.MuiButton-label > .MuiGrid-container > :nth-child(1)').click() //Running default request on predict space
+        cy.wait(15000)
+    });
 
-        cy.wait(30000)
+    it('Goes to the dashboard and stop the webservice', () => {
+        cy.get('#dashboard > .MuiButtonBase-root > .MuiListItemIcon-root > .button-wrapper').click() //Go to dashboard
+        cy.wait(3000)
+    });
+
+    it('Go to the list view to stop webservice', () => {
+        cy.get('#icon-list').click() //Getting the list view
+        cy.wait(2000)
+        cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click() //Clic to dotted menu on the right
+        cy.wait(2000)
+        cy.get('#menu-item-1 > .MuiTypography-root').click() //Click to stop WS
+        cy.wait(2000)
+        cy.get('#confirm > .MuiButton-label').click() //Confirm to stop WS
+        cy.wait(5000)
+    });
+
+    it('Checks if Webservice is really off', () => {
+        cy.get(':nth-child(3) > #webservice > #webservice-status > .MuiGrid-root > .MuiTypography-root').contains('off')
     });
 })
