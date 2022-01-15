@@ -18,12 +18,12 @@ Cypress.Commands.add("restoreLocalStorage", () => {
 //Custom command to login on SmartPredict
 Cypress.Commands.add('loginSmartPredict', () => {
     cy.request({
-        url: "https://gateway.smartpredict.cloud",
+        url: "https://dev-gateway.smartpredict.cloud",
         method: 'POST',
         body: {
             query: "mutation signIn($email: String!, $password: String!) {\n  signIn(input: {email: $email, password: $password}) {\n    accessToken\n    slug\n    confirmed\n    __typename\n  }\n}\n",
-            variables: { email: "aristide@smartpredict.ai", password: "bq4X7kdy@@@" }
+            variables: { email: "aristide@smartpredict.ai", password: "bq4X7kdy@@" }
         }
     }).then(res => localStorage.setItem('token', res.body.data.signIn.accessToken));
-    cy.visit('https://cloud.smartpredict.ai/')
+    cy.visit('http://dev-client-front.smartpredict.cloud')
 })

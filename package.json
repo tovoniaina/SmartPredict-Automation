@@ -4,9 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "testSmartPredict": "./node_modules/.bin/cypress run --headless",
-    "runHeaded": "./node_modules/.bin/cypress run --headed --browser chrome"
+    "cy:run": "cypress run --env allure=true",
+    "allure:report": "allure generate allure-results --clean -o allure-report",
+    "allure:clear": "if exist allure-results rmdir /q /s allure-results && if exist allure-report rmdir /q /s allure-report && if exist cypress\\screenshots rmdir /q /s cypress\\screenshots && if exist cypress\\videos rmdir /q /s cypress\\videos",
+    "pretest": "npm run allure:clear",
+    "test": "npm run cy:run || npm run posttest",
+    "posttest": "npm run allure:report"
   },
   "repository": {
     "type": "git",
@@ -19,6 +22,10 @@
   },
   "homepage": "https://gitlab.com/a7940/SmartPredict-automation#readme",
   "devDependencies": {
-    "cypress": "^8.3.0"
+    "@shelex/cypress-allure-plugin": "^2.23.0",
+    "cypress": "^8.7.0"
+  },
+  "dependencies": {
+    "allure-commandline": "^2.17.2"
   }
 }
