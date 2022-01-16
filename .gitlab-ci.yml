@@ -16,7 +16,7 @@ test:
 cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
-    - '.\node_modules\.bin\cypress.cmd install --force'
+    - node_modules
 
 .download_history: &download_history
   after_script:
