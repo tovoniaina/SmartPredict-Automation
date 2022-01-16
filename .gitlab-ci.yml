@@ -44,9 +44,9 @@ cache:
     paths:
       - allure-results/
 
-smoke:
-  <<: *test_template
-  <<: *download_history
+# smoke:
+#   <<: *test_template
+#   <<: *download_history
 
 allure_report:
   stage: allure
@@ -54,8 +54,8 @@ allure_report:
   image: 
     name: ubuntu:latest
     entrypoint: [""]
-  dependencies: 
-    - smoke
+  # dependencies: 
+  #   - smoke
   variables:
     DEBIAN_FRONTEND: noninteractive
     TZ: Europe/London
