@@ -9,7 +9,7 @@ test:
   stage: test
   script:
     - npm install cypress
-    - npm run testSmartPredict --env allure=true --spec "cypress/integration/1.Use cases/imageClassification.spec.js"
+    - npm run testSmartPredict --env allure=true --spec "cypress/integration/1.Use cases/imageClassification.spec.js" --browser chrome
 
 
 

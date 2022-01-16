@@ -15,7 +15,7 @@ describe('Login into SP platform without UI', () => {
 
     it('Send request to the SPs gateway and visit the plateform homepage', () => {
         cy.loginSmartPredict()
-        cy.wait(9000)
+        cy.wait(13000)
     });
 })
 
