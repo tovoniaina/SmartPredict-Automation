@@ -55,7 +55,7 @@ describe('Navigation through AutoPredict dialog', () => {
 
     it('Run the default request on predict space', () => {
         cy.get('.MuiButton-label > .MuiGrid-container > :nth-child(1)').click()
-        cy.wait(9000)
+        cy.wait(10000)
     });
 })
 

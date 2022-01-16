@@ -56,6 +56,7 @@ describe('Testing Credit card fraud detection use case', () => {
     });
 
     it('Check if the output is well displayed', () => {
+        cy.wait(4000)
         cy.get('.jss1105').contains('VERDICT').should('be.visible') //should have VERDICT word visible to validate this step.
         cy.wait(2000)
     });
