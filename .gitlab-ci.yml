@@ -9,7 +9,7 @@ test:
   stage: test
   script:
     - npm install cypress
-    - npm run testSmartPredict
+    - npm run testSmartPredict --env allure=true --spec "cypress/integration/1.Use cases/imageClassification.spec.js"
 
 
 
@@ -51,6 +51,7 @@ cache:
 
 allure_report:
   stage: allure
+  script: allure serve allure-results
   when: always
   image: 
     name: ubuntu:latest
