@@ -34,6 +34,7 @@ cache:
     entrypoint: [""]
   stage: test
   variables:
+    CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
     CY_RUN_ID: ${CI_JOB_ID}
   script:
     - export CYPRESS_VIDEO=false
