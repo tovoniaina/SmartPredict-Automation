@@ -1,17 +1,17 @@
-# image: cypress/base:10
-
-# stages:
-#   - test
-# test:
-#   stage: test
-#   script:
-#     - npm install
-#     - npm run testSmartPredict
-
 stages:
   - test
   - allure
   - deploy
+
+image: cypress/base:10
+
+test:
+  stage: test
+  script:
+    - npm install
+    - npm run testSmartPredict
+
+
 
 cache:
   key: ${CI_COMMIT_REF_SLUG}
