@@ -34,7 +34,7 @@ cache:
     entrypoint: [""]
   stage: test
   variables:
-    CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
+  CYPRESS_CACHE_FOLDER: '~/.cache/Cypress'
     CY_RUN_ID: ${CI_JOB_ID}
   script:
     - export CYPRESS_VIDEO=false
@@ -58,7 +58,6 @@ allure_report:
   # dependencies: 
   #   - smoke
   variables:
-    CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
     DEBIAN_FRONTEND: noninteractive
     TZ: Europe/London
   before_script:
