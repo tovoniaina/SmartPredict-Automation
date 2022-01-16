@@ -58,6 +58,7 @@ allure_report:
   # dependencies: 
   #   - smoke
   variables:
+    CYPRESS_CACHE_FOLDER: "$CI_PROJECT_DIR/cache/Cypress"
     DEBIAN_FRONTEND: noninteractive
     TZ: Europe/London
   before_script:
