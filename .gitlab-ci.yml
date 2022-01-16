@@ -1,9 +1,68 @@
-image: cypress/base:10
+# image: cypress/base:10
+
+# stages:
+#   - test
+# test:
+#   stage: test
+#   script:
+#     - npm install
+#     - npm run testSmartPredict
 
 stages:
   - test
-test:
+  - allure
+  - deploy
+
+# .download_history: &download_history
+#   after_script:
+#     - apt-get install -y unzip
+#     - mkdir backup && cd backup || true
+#     - "curl --location --output report.zip --request GET \"https://gitlab.com/api/v4/projects/32764649/jobs/artifacts/master/download?job=pages\" --header \"Authorization: Bearer ${CI_DEPLOY_TOKEN}\" || true"
+#     - (unzip report.zip) || true
+#     - cd ../
+#     - (cp -r backup/public/history/ allure-results/history) || true
+
+.test_template: &test_template
+  allow_failure: true
   stage: test
   script:
     - npm install
-    - npm run testSmartPredict
+  artifacts:
+    when: always
+    paths:
+      - allure-results/
+
+# smoke::
+#   <<: *test_template
+#   <<: *download_history
+
+allure_report:
+  stage: allure
+  when: always
+  image: cypress/base:10
+  # dependencies: 
+  #   - smoke
+  script:
+    - npm install
+    - npx allure generate #change allure command specific to your framework
+  artifacts:
+    when: always
+    paths:
+      - allure-report/
+      - allure-results/
+  only:
+    - master
+  
+pages:
+  stage: deploy
+  when: always
+  dependencies:
+    - allure_report
+  script:
+    - mv allure-report/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  only:
+    - master
