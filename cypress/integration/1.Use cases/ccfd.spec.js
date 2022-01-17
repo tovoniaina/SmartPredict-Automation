@@ -48,22 +48,23 @@ describe('Testing Credit card fraud detection use case', () => {
 
     it('It checks if the run of the project is finished', () => {
         cy.get('#done-description > :nth-child(2) > .MuiTypography-root').contains("All set! Now let's see the results in the Predict Space").should('be.visible') //Should have this setence to validate this step
-        cy.wait(2000)
     });
 
     it('Click to see the second dialog on predict space', () => {
+        cy.wait(3000)
         cy.get('.MuiButton-label > .MuiGrid-root').click() //Click to see the second dialog on predict space
-        cy.wait(2000)
     });
 
     it('Running default request on predict space', () => {
+        cy.wait(2000)
         cy.get('.MuiButton-label > .MuiGrid-container > :nth-child(1)').click() //Running default request on predict space
         cy.wait(15000)
     });
 
     it('Check if the output is well displayed', () => {
         cy.wait(5000)
-        cy.get('.jss1104').contains('index').should('be.visible') //should have index word visible to validate this step.
+        //cy.get('.jss1104').contains('index').should('be.visible') //should have index word visible to validate this step.
+        cy.xpath('//*[@id="dataset-preview-table"]/div[1]/div/div[1]/div/div/div/span[2]').contains('VERDICT').should('be.visible')
         cy.wait(2000)
     });
 
@@ -110,7 +111,7 @@ describe('Delete the project', () => {
     it('delete the project permanently', () => {
         cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
         cy.wait(2000)
-        cy.get('#menu-item-3 > .MuiTypography-root').click()
+        cy.get('#menu-item-4 > .MuiTypography-root').click()
         cy.wait(2000)
         cy.get('#confirm > .MuiButton-label').click()
         cy.wait(2000)
