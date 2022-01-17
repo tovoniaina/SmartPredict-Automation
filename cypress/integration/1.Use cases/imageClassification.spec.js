@@ -13,7 +13,7 @@ afterEach(() => {
 
 describe('Login into SP platform without UI', () => {
 
-    it('Send request to the SPs gateway and visit the plateform homepage', () => {
+    it.only('Send request to the SPs gateway and visit the plateform homepage', () => {
         cy.loginSmartPredict()
         cy.wait(13000)
     });
@@ -74,7 +74,7 @@ describe('Go to the monitor space to stop webservice', () => {
         cy.get('#monitor > .MuiTab-wrapper').click()
         cy.wait(2000)
         cy.get('#stop-web-service > .MuiSvgIcon-root').click()
-        cy.wait(4000)
+        cy.wait(6000)
     });
 
     it('Check if the webservice is really off', () => {
