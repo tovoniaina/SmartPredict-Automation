@@ -13,7 +13,7 @@ afterEach(() => {
 
 describe('Login into SP platform without UI', () => {
 
-    it.only('Send request to the SPs gateway and visit the plateform homepage', () => {
+    it('Send request to the SPs gateway and visit the plateform homepage', () => {
         cy.loginSmartPredict()
         cy.wait(13000)
     });
