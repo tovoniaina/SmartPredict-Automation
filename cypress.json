@@ -1,7 +1,7 @@
 {
     "hideXHR": true,
     "video": false,
-    "viewportWidth": 1920,
+    "viewportWidth": 2400,
     "viewportHeight": 1500,
     "projectId": "v3utq3",
     "watchForFileChanges": false,
@@ -9,5 +9,9 @@
         "allureResultsPath": "allure-results"
     },
     "screenshotOnRunFailure": false,
-    "trashAssetsBeforeRuns": false
+    "trashAssetsBeforeRuns": false,
+    "retries": {
+        "runMode": 2,
+        "openMode": 0
+    }
 }

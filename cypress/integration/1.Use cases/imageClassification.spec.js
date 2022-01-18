@@ -106,7 +106,7 @@ describe('Delete the project', () => {
     it('delete the project permanently', () => {
         cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
         cy.wait(1000)
-        cy.get('#menu-item-4 > .MuiTypography-root').click()
+        cy.get('#menu-item-3 > .MuiTypography-root').click()
         cy.wait(1000)
         cy.get('#confirm > .MuiButton-label').click()
         cy.wait(1000)
