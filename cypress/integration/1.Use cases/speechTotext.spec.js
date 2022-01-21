@@ -59,7 +59,7 @@ describe('Run Speech to Text use case', () => {
     });
 
     it('Loading, please be patient, output result will be displayed...', () => {
-        cy.wait(13000)
+        cy.wait(25000)
     });
 })
 
@@ -72,7 +72,7 @@ describe('Check if we have the expected output', () => {
 
     it('Check if some word exists to validate this step', () => {
         cy.wait(1000)
-        cy.xpath('//*[@id="output-editor"]/div/div/div[2]/div/div/table/tbody/tr[4]/td/table/tbody/tr/td[4]/div').contains('Thank you for choosing the Olympus Dictation Management System.').should('be.visible')
+        cy.get(':nth-child(4) > :nth-child(1) > .jsoneditor-values > tbody > tr > :nth-child(4) > .jsoneditor-value').contains('Thank you for choosing the Olympus Dictation Management System.').should('be.visible')
     });
 })
 
@@ -85,24 +85,52 @@ describe('Go to the dashboard', () => {
         cy.get('#dashboard > .MuiButtonBase-root > .MuiListItemIcon-root > .button-wrapper').click()
     });
 
-    it('Get to the dotted menu to stop ws', () => {
-        cy.wait(3000)
-        cy.get('#menu-item-1 > .MuiTypography-root').click()
-    });
-    it('Stop the webservice', () => {
-        cy.wait(1000)
-        cy.xpath('//*[@id="menu-item-1"]/p').click()
+
+})
+
+describe('Stopping the webservice', () => {
+    it('Switch to list view', () => {
+        cy.wait(2000)
+        cy.get('#icon-list > .MuiIconButton-label > .MuiSvgIcon-root').click()
     });
 
-    it('Check if the webservice is really off', () => {
-        cy.wait(5000)
-        cy.xpath('//*[@id="running-progress"]/div[1]/span/p').contains('off').should('be.visible')
+    it('Getting the dotted menu to stop webservice', () => {
+        cy.wait(1000)
+        cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
+    });
+
+    it('Stop the webservice', () => {
+        cy.wait(1000)
+        cy.get('#menu-item-1 > .MuiTypography-root').click()
+    });
+
+    it('Last confirmation for stopping webservice', () => {
+        cy.wait(1000)
+        cy.get('#confirm > .MuiButton-label').click()
     });
 })
 
 
-// describe('Delete the project', () => {
-//     it('Delete permanently the project', () => {
 
-//     });
-// })
+describe('Delete the project', () => {
+
+    it('Getting the dotted menu to stop webservice', () => {
+        cy.wait(4000)
+        cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
+    });
+
+    it('Get the dotted menu in the project', () => {
+        cy.wait(3000)
+        cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
+    });
+
+    it('Delete the project', () => {
+        cy.wait(1000)
+        cy.get('#menu-item-3 > .MuiTypography-root').click()
+    });
+
+    it('Confirm delete project', () => {
+        cy.wait(1000)
+        cy.get('#confirm > .MuiButton-label').click()
+    });
+})
