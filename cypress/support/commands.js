@@ -29,3 +29,40 @@ Cypress.Commands.add('loginSmartPredict', () => {
     //cy.visit('http://dev-client-front.smartpredict.cloud')
     cy.visit('https://cloud.smartpredict.ai/')
 })
+
+//Custom command for getting list view
+
+Cypress.Commands.add('listView', () => {
+    cy.wait(2000)
+    cy.get('#icon-list > .MuiIconButton-label > .MuiSvgIcon-root').click()
+})
+
+//Custom command to delete
+
+Cypress.Commands.add('deleteProject', () => {
+
+    cy.wait(2000)
+    cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
+    cy.wait(2000)
+    cy.get('#menu-item-3 > .MuiTypography-root').click()
+    cy.wait(2000)
+    cy.get('#confirm > .MuiButton-label').click()
+})
+
+//Custom command for stopping webservice
+Cypress.Commands.add('stopWebservice', () => {
+    cy.wait(2000)
+    cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
+    cy.wait(2000)
+    cy.get('#menu-item-1 > .MuiTypography-root').click()
+    cy.wait(2000)
+    cy.get('#confirm > .MuiButton-label')
+})
+
+//Custom command for going to the Dashboard
+
+Cypress.Commands.add('goToDashboard', () => {
+    cy.wait(2000)
+    cy.get('#dashboard > .MuiButtonBase-root > .MuiListItemIcon-root > .button-wrapper').click()
+})
+

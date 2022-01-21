@@ -15,6 +15,9 @@ describe('Login into SP platform without UI', () => {
 
     it('Send request to the SPs gateway and visit the plateform homepage', () => {
         cy.loginSmartPredict()
+    });
+
+    it('Wait for loading after Login', () => {
         cy.wait(13000)
     });
 })
@@ -45,6 +48,7 @@ describe('Run Speech to Text use case', () => {
     });
 
     it('Verify if the project has been ran successfully', () => {
+        cy.wait(2000)
         cy.get('#done-description > :nth-child(2) > .MuiTypography-root').contains("All set! Now let's see the results in the Predict Space.").should('be.visible')
     });
 
@@ -54,7 +58,7 @@ describe('Run Speech to Text use case', () => {
     });
 
     it('Run de default request', () => {
-        cy.wait(3000)
+        cy.wait(2000)
         cy.get('.MuiButton-label > .MuiGrid-container > :nth-child(1)').click()
     });
 
@@ -81,56 +85,27 @@ describe('Check if we have the expected output', () => {
 describe('Go to the dashboard', () => {
 
     it('Go to the dashboard', () => {
-        cy.wait(2000)
-        cy.get('#dashboard > .MuiButtonBase-root > .MuiListItemIcon-root > .button-wrapper').click()
+        cy.goToDashboard()
     });
-
-
 })
 
+describe('Getting list view', () => {
+    it('Go to the list view', () => {
+        cy.listView()
+    });
+})
+
+
 describe('Stopping the webservice', () => {
-    it('Switch to list view', () => {
-        cy.wait(2000)
-        cy.get('#icon-list > .MuiIconButton-label > .MuiSvgIcon-root').click()
-    });
-
-    it('Getting the dotted menu to stop webservice', () => {
-        cy.wait(1000)
-        cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
-    });
-
-    it('Stop the webservice', () => {
-        cy.wait(1000)
-        cy.get('#menu-item-1 > .MuiTypography-root').click()
-    });
-
-    it('Last confirmation for stopping webservice', () => {
-        cy.wait(1000)
-        cy.get('#confirm > .MuiButton-label').click()
+    it('Stop the Webservice', () => {
+        cy.stopWebservice
     });
 })
 
 
 
 describe('Delete the project', () => {
-
-    it('Getting the dotted menu to stop webservice', () => {
-        cy.wait(4000)
-        cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
-    });
-
-    it('Get the dotted menu in the project', () => {
-        cy.wait(3000)
-        cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
-    });
-
-    it('Delete the project', () => {
-        cy.wait(1000)
-        cy.get('#menu-item-3 > .MuiTypography-root').click()
-    });
-
-    it('Confirm delete project', () => {
-        cy.wait(1000)
-        cy.get('#confirm > .MuiButton-label').click()
+    it('Delete permanently the project', () => {
+        cy.deleteProject()
     });
 })

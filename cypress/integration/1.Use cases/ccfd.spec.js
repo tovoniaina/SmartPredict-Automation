@@ -15,6 +15,9 @@ describe('Login into SP platform without UI', () => {
 
     it('Send request to the SPs gateway and visit the plateform homepage', () => {
         cy.loginSmartPredict()
+    });
+
+    it('Wait for loading after Login', () => {
         cy.wait(13000)
     });
 })
@@ -43,7 +46,10 @@ describe('Testing Credit card fraud detection use case', () => {
 
     it('Run the project', () => {
         cy.get('#upgrade-to-premium > .MuiButton-label').click() //Run project
-        cy.wait(70000)
+    });
+
+    it('Wait for running the CCFD project ', () => {
+        cy.wait(75000)
     });
 
     it('It checks if the run of the project is finished', () => {
@@ -55,9 +61,12 @@ describe('Testing Credit card fraud detection use case', () => {
         cy.get('.MuiButton-label > .MuiGrid-root').click() //Click to see the second dialog on predict space
     });
 
-    it('Running default request on predict space', () => {
+    it('Clicking the button before sending request', () => {
         cy.wait(2000)
         cy.get('.MuiButton-label > .MuiGrid-container > :nth-child(1)').click() //Running default request on predict space
+    });
+
+    it('Running the default request on predict space', () => {
         cy.wait(15000)
     });
 
@@ -74,47 +83,28 @@ describe('Testing Credit card fraud detection use case', () => {
 
 describe('CCFD project running finished, Go to dashboard', () => {
     it('Go to the dashboard', () => {
-        cy.get('#dashboard > .MuiButtonBase-root > .MuiListItemIcon-root > .button-wrapper').click() //Go to dashboard
-        cy.wait(3000)
+        cy.goToDashboard()
     });
 
+})
+
+describe('Getting list view', () => {
+    it('Go to the list view', () => {
+        cy.listView()
+    });
 })
 
 
 describe('Go to stop webservice', () => {
-    it('Go to the list view to stop webservice', () => {
-        cy.get('#icon-list').click() //Getting the list view
-        cy.wait(2000)
-    });
-
-
-    it('Clic to dotted menu on the right', () => {
-        cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click() //Clic to dotted menu on the right
-        cy.wait(2000)
-    });
-
-    it('Click to stop WS', () => {
-        cy.get('#menu-item-1 > .MuiTypography-root').click() //Click to stop WS
-        cy.wait(2000)
-    });
-
-    it('Confirm to stop WS', () => {
-        cy.get('#confirm > .MuiButton-label').click() //Confirm to stop WS
-        cy.wait(5000)
+    it('Stop the webservice', () => {
+        cy.stopWebservice()
     });
 })
 
 
-
-
 describe('Delete the project', () => {
-    it('delete the project permanently', () => {
-        cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
+    it('Delete permanently the project', () => {
         cy.wait(2000)
-        cy.get('#menu-item-4 > .MuiTypography-root').click()
-        cy.wait(2000)
-        cy.get('#confirm > .MuiButton-label').click()
-        cy.wait(2000)
+        cy.deleteProject()
     });
-
 })
