@@ -42,7 +42,7 @@ Cypress.Commands.add('listView', () => {
 Cypress.Commands.add('deleteProject', () => {
 
     cy.wait(2000)
-    cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
+    cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click({ force: true })
     cy.wait(2000)
     cy.get('#menu-item-3 > .MuiTypography-root').click()
     cy.wait(2000)
