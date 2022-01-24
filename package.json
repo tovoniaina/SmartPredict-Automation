@@ -11,7 +11,8 @@
     "allure:clear": "if exist allure-results rmdir /q /s allure-results && if exist allure-report rmdir /q /s allure-report && if exist cypress\\screenshots rmdir /q /s cypress\\screenshots && if exist cypress\\videos rmdir /q /s cypress\\videos",
     "pretest": "npm run allure:clear",
     "test": "npm run cy:run || npm run posttest",
-    "posttest": "npm run allure:report"
+    "posttest": "npm run allure:report",
+    "testLocal": "npx cypress run --spec 'cypress/integration/1.Use cases/ccfd.spec.js','cypress/integration/1.Use cases/imageClassification.spec.js','cypress/integration/1.Use cases/textTospeech.spec.js' --browser chrome "
   },
   "repository": {
     "type": "git",
