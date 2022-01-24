@@ -3,13 +3,14 @@ stages:
   - allure
   - deploy
 
-image: cypress/base:10
+image: cypress/browsers:node14.18.3-chrome97.0.4692.99
+
 
 test:
   stage: test
   script:
     - npm install cypress
-    - npm run testSmartPredict --env allure=true --browser chrome
+    - npx cypress run --env allure=true --browser chrome
 
 
 
