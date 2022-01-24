@@ -25,7 +25,8 @@ describe('Login into SP platform without UI', () => {
 
 describe('Testing Credit card fraud detection use case', () => {
     it('Looking for CCFD use case and click on it', () => {
-        cy.get(':nth-child(3) > .MuiGrid-spacing-xs-2 > :nth-child(2) > #use-case-item > .MuiButtonBase-root').scrollIntoView().click() //Scrollview until CCFD appears and click on it
+        cy.wait(2000)
+        cy.get(':nth-child(3) > .MuiGrid-spacing-xs-2 > :nth-child(2) > #use-case-item > .MuiButtonBase-root').click() //Scrollview until CCFD appears and click on it
         cy.wait(3000)
     });
 
