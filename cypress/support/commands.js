@@ -42,7 +42,7 @@ Cypress.Commands.add('listView', () => {
 Cypress.Commands.add('deleteProject', () => {
 
     cy.wait(2000)
-    cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click({ force: true })
+    cy.get(':nth-child(1) > #acions > .MuiGrid-root > .MuiSvgIcon-root').click()
     cy.wait(2000)
     cy.get('#menu-item-3 > .MuiTypography-root').click()
     cy.wait(2000)
@@ -56,7 +56,7 @@ Cypress.Commands.add('stopWebservice', () => {
     cy.wait(2000)
     cy.get('#menu-item-1 > .MuiTypography-root').click()
     cy.wait(2000)
-    cy.get('#confirm > .MuiButton-label')
+    cy.get('#confirm > .MuiButton-label').click()
 })
 
 //Custom command for going to the Dashboard

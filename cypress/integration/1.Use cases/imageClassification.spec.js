@@ -101,6 +101,12 @@ describe('Go to the dashboard and the project has been ran successfully', () => 
     });
 })
 
+describe('Getting the list view', () => {
+    it('Get the list view', () => {
+        cy.listView()
+    });
+})
+
 describe('Delete the project', () => {
     it('Delete permanently the project', () => {
         cy.wait(2000)

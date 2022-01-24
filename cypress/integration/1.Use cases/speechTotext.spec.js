@@ -63,7 +63,7 @@ describe('Run Speech to Text use case', () => {
     });
 
     it('Loading, please be patient, output result will be displayed...', () => {
-        cy.wait(25000)
+        cy.wait(30000)
     });
 })
 
@@ -75,7 +75,7 @@ describe('Check if we have the expected output', () => {
     });
 
     it('Check if some word exists to validate this step', () => {
-        cy.wait(1000)
+        cy.wait(3000)
         cy.get(':nth-child(4) > :nth-child(1) > .jsoneditor-values > tbody > tr > :nth-child(4) > .jsoneditor-value').contains('Thank you for choosing the Olympus Dictation Management System.').should('be.visible')
     });
 })
@@ -98,7 +98,7 @@ describe('Getting list view', () => {
 
 describe('Stopping the webservice', () => {
     it('Stop the Webservice', () => {
-        cy.stopWebservice
+        cy.stopWebservice()
     });
 })
 
