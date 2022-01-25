@@ -12,7 +12,7 @@
     "pretest": "npm run allure:clear",
     "test": "npm run cy:run || npm run posttest",
     "posttest": "npm run allure:report",
-    "testLocal": "npx cypress run --spec 'cypress/integration/1.Use cases/ccfd.spec.js','cypress/integration/1.Use cases/imageClassification.spec.js','cypress/integration/1.Use cases/textTospeech.spec.js' --browser chrome "
+    "testLocal": "npx cypress run --spec 'cypress/integration/1.Use cases/ccfd.spec.js','cypress/integration/1.Use cases/imageClassification.spec.js','cypress/integration/1.Use cases/speechTotext.spec.js' --browser chrome "
   },
   "repository": {
     "type": "git",

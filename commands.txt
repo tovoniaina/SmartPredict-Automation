@@ -9,3 +9,8 @@ Cypress dashboard invitation link: = https://dashboard.cypress.io/invitation/5b6
 
 
 cypress/base:10
+
+    "testSmartPredict": "./node_modules/.bin/cypress run --headless --browser chrome --env allure=true",
+if exist allure-results rmdir /q /s allure-results && if exist allure-report rmdir /q /s allure-report && if exist cypress\\screenshots rmdir /q /s cypress\\screenshots && if exist cypress\\videos rmdir /q /s cypress\\videos
+stress test cypress 
+https://github.com/trentrand/cypress-utils

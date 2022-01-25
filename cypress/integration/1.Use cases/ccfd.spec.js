@@ -65,14 +65,15 @@ describe('Testing Credit card fraud detection use case', () => {
     it('Clicking the button before sending request', () => {
         cy.wait(2000)
         cy.get('.MuiButton-label > .MuiGrid-container > :nth-child(1)').click() //Running default request on predict space
-    });
-
-    it('Running the default request on predict space', () => {
         cy.wait(15000)
     });
 
+    // it('Running the default request on predict space', () => {
+    //     cy.wait(15000)
+    // });
+
     it('Check if the output is well displayed', () => {
-        cy.wait(5000)
+        cy.wait(3000)
         //cy.get('.jss1104').contains('index').should('be.visible') //should have index word visible to validate this step.
         cy.xpath('//*[@id="dataset-preview-table"]/div[1]/div/div[1]/div/div/div/span[2]').contains('VERDICT').should('be.visible')
         cy.wait(2000)

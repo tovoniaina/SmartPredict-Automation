@@ -33,7 +33,7 @@ Cypress.Commands.add('loginSmartPredict', () => {
 //Custom command for getting list view
 
 Cypress.Commands.add('listView', () => {
-    cy.wait(2000)
+    cy.wait(3000)
     cy.get('#icon-list > .MuiIconButton-label > .MuiSvgIcon-root').click()
 })
 
