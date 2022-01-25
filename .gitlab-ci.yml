@@ -3,7 +3,8 @@ stages:
   - allure
   - deploy
 
-image: cypress/browsers:node12.14.1-chrome85-ff81
+image: cypress:base/10
+cypress:base/10
 
 test:
   stage: test
