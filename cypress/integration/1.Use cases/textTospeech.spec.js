@@ -25,7 +25,7 @@ describe('Login into SP platform without UI', () => {
 
 describe('Run Text to Speech use case', () => {
     it('Click on Text to Speech use case', () => {
-        cy.get(':nth-child(5) > .MuiGrid-container > :nth-child(1) > #use-case-item > .MuiButtonBase-root > .MuiCardContent-root').click()
+        cy.get(':nth-child(5) > .MuiGrid-container > :nth-child(2) > #use-case-item > .MuiButtonBase-root > .MuiCardContent-root').click()
     });
 
     it('Click on the continue button', () => {
@@ -63,20 +63,26 @@ describe('Run Text to Speech use case', () => {
     });
 
     it('Loading, please be patient, output result will be displayed...', () => {
-        cy.wait(30000)
+        cy.wait(23000)
     });
 })
 
 
 
 describe('Check if we have the expected output', () => {
-    it('Expand all Json file', () => {
+    it('Getting JSON tab to check the output', () => {
+        cy.wait(2000)
+        cy.get('#OUTPUT-tabs > .MuiTabs-scroller > .MuiTabs-flexContainer > #json > .MuiTab-wrapper > .MuiGrid-root').click()
+    });
+
+    it('expand all JSON content', () => {
+        cy.wait(1000)
         cy.get('.jsoneditor-expand-all').click()
     });
 
-    it('Check if some word exists to validate this step', () => {
-        cy.wait(3000)
-        cy.get(':nth-child(4) > :nth-child(1) > .jsoneditor-values > tbody > tr > :nth-child(4) > .jsoneditor-value').contains('Thank you for choosing the Olympus Dictation Management System.').should('be.visible')
+    it('Check in JSON output field if we have this text', () => {
+        cy.wait(1000)
+        cy.get(':nth-child(6) > :nth-child(1) > .jsoneditor-values > tbody > tr > :nth-child(4) > .jsoneditor-value').contains('audio/mp3').should('be.visible')
     });
 })
 

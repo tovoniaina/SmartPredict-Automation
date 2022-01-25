@@ -4,7 +4,6 @@ stages:
   - deploy
 
 image: cypress:base/10
-cypress:base/10
 
 test:
   stage: test
