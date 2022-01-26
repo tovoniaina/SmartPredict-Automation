@@ -23,7 +23,7 @@ Cypress.Commands.add('loginSmartPredict', () => {
         method: 'POST',
         body: {
             query: "mutation signIn($email: String!, $password: String!) {\n  signIn(input: {email: $email, password: $password}) {\n    accessToken\n    slug\n    confirmed\n    __typename\n  }\n}\n",
-            variables: { email: "aristide@smartpredict.ai", password: "bq4X7kdy@@@" }
+            variables: { email: "spt379110@gmail.com", password: "alfataloha2021@" }
         }
     }).then(res => localStorage.setItem('token', res.body.data.signIn.accessToken));
     //cy.visit('http://dev-client-front.smartpredict.cloud')
