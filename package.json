@@ -26,7 +26,7 @@
   "homepage": "https://gitlab.com/a7940/SmartPredict-automation#readme",
   "devDependencies": {
     "@shelex/cypress-allure-plugin": "^2.23.0",
-    "cypress": "^9.3.1",
+    "cypress": "^8.4.1",
     "cypress-xpath": "^1.6.2"
   },
   "dependencies": {
