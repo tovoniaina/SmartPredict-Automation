@@ -53,12 +53,12 @@ describe('Running the project in build space', () => {
     });
 
     it('Waiting for the run project', () => {
-        cy.wait(30000)
+        cy.wait(35000)
     });
 
     it('Check if the run has been successfully', () => {
         cy.wait(2000)
-        cy.get('.jss419 > .MuiGrid-direction-xs-column > .MuiGrid-root > .MuiTypography-root').contains('Success').should('be.visible')
+        cy.xpath('//*[@id="running-state-tooltip"]/div/div/div/div[1]/div/div/p').contains('Success').should('be.visible')
     });
 })
 

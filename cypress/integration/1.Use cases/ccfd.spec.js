@@ -31,7 +31,9 @@ describe('Testing Credit card fraud detection use case', () => {
     });
 
     it('Click on complete all steps with an example', () => {
-        cy.get(':nth-child(4) > #action-button').click() //Click on complete all steps with an example
+        //cy.get(':nth-child(4) > #action-button').click() //Click on complete all steps with an example
+        cy.xpath('/html/body/div[1]/div[2]/main/div/div[1]/div/div[3]/div[2]/div/div/div/div/div/div/div/div[2]/div/div[2]/div[2]/div/div[4]/button/span').click()
+
         cy.wait(2000)
     });
 
