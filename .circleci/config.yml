@@ -1,0 +1,92 @@
+stages:
+  - test
+  - allure
+  - deploy
+
+image: cypress/browsers:node12.14.1-chrome85-ff81
+
+test:
+  stage: test
+  script:
+    - npm install cypress
+    - npm run testSmartPredict
+
+
+
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - node_modules
+
+.download_history: &download_history
+  after_script:
+    - apt-get install -y unzip
+    - mkdir backup && cd backup || true
+    - "curl --location --output report.zip --request GET \"https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/jobs/artifacts/master/download?job=pages\" --header \"Authorization: Bearer ${CI_DEPLOY_TOKEN}\" || true"
+    - (unzip report.zip) || true
+    - cd ../
+    - (cp -r backup/public/history/ allure-results/history/) || true
+
+
+.test_template: &test_template
+  image: 
+    name: cypress/included:7.5.0
+    entrypoint: [""]
+  stage: test
+  variables:
+    CYPRESS_CACHE_FOLDER: '~/.cache/Cypress'
+    CY_RUN_ID: ${CI_JOB_ID}
+  script:
+    - export CYPRESS_VIDEO=false
+    - npm install
+    - ./node_modules/.bin/cypress run --headless --env allure=true
+  artifacts:
+    when: always
+    paths:
+      - allure-results/
+
+# smoke:
+#   <<: *test_template
+#   <<: *download_history
+
+allure_report:
+  stage: allure
+  script: allure serve allure-results
+  when: always
+  image: 
+    name: ubuntu:latest
+    entrypoint: [""]
+  # dependencies: 
+  #   - smoke
+  variables:
+    DEBIAN_FRONTEND: noninteractive
+    TZ: Europe/London
+  before_script:
+    - apt-get update
+    - apt-get install -y default-jdk wget unzip 
+    - mkdir /work/
+    - wget https://github.com/allure-framework/allure2/releases/download/2.13.8/allure-2.13.8.zip -P /work/
+    - unzip /work/allure-2.13.8.zip -d /work/
+  script:
+    - /work/allure-2.13.8/bin/allure generate allure-results --clean -o allure-report
+  artifacts:
+    when: always
+    paths:
+      - allure-report/
+      - allure-results/
+  only:
+    - master
+
+pages:
+  stage: deploy
+  when: always
+  dependencies:
+    - allure_report
+  script:
+    - mv allure-report/ public/
+  artifacts:
+    paths:
+      - public
+    expire_in: 30 days
+  only:
+    - master
