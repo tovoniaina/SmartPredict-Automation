@@ -8,10 +8,10 @@
     "env": {
         "allureResultsPath": "allure-results"
     },
-    "screenshotOnRunFailure": false,
+    "screenshotOnRunFailure": true,
     "trashAssetsBeforeRuns": false,
     "retries": {
-        "runMode": 0,
+        "runMode": 3,
         "openMode": 0
     }
 }

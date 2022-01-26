@@ -11,16 +11,17 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-deps-{{ .master }}-{{ checksum "package.json" }}
-            - v1-deps-{{ .master }}
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
             - v1-deps
       - run:
           name: Install Dependencies
           command: npm ci
       - save_cache:
-          key: v1-deps-{{ .master }}-{{ checksum "package.json" }}
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
           # cache NPM modules and the folder with the Cypress binary
           paths:
             - ~/.npm
             - ~/.cache
-      - run: $(npm bin)/cypress run --record --key c93cd6f8-0232-400b-92de-5d2584dd5be1
+      - run: $(npm bin)/cypress run --browser chrome 
+      #--record --key c93cd6f8-0232-400b-92de-5d2584dd5be1
