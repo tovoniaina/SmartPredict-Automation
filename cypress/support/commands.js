@@ -23,7 +23,7 @@ Cypress.Commands.add('loginSmartPredict', () => {
         method: 'POST',
         body: {
             query: "mutation signIn($email: String!, $password: String!) {\n  signIn(input: {email: $email, password: $password}) {\n    accessToken\n    slug\n    confirmed\n    __typename\n  }\n}\n",
-            variables: { email: "spt379110@gmail.com", password: "alfataloha2021@" }
+            variables: { email: "megofi3005@showbaz.com", password: "alfataloha2021@" }
         }
     }).then(res => localStorage.setItem('token', res.body.data.signIn.accessToken));
     //cy.visit('http://dev-client-front.smartpredict.cloud')
@@ -64,5 +64,11 @@ Cypress.Commands.add('stopWebservice', () => {
 Cypress.Commands.add('goToDashboard', () => {
     cy.wait(2000)
     cy.get('#dashboard > .MuiButtonBase-root > .MuiListItemIcon-root > .button-wrapper').click()
+})
+
+
+//Choice of SPVM
+Cypress.Commands.add('spvmFree', () => {
+    cy.xpath('//*[@id="SPVM free"]/span[2]/div/p').click() //Choose SPVM  
 })
 

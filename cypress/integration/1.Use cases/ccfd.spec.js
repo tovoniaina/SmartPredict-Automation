@@ -43,7 +43,7 @@ describe('Testing Credit card fraud detection use case', () => {
     });
 
     it('Choose resources templates', () => {
-        cy.get('#SPVM2 > .MuiFormControlLabel-label > .MuiGrid-root > .MuiTypography-root').click() //Choose SPVM 
+        cy.spvmFree()
         cy.wait(3000)
     });
 

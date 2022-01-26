@@ -44,7 +44,7 @@ describe('Running the project in build space', () => {
 
     it('Choose SPVM to use', () => {
         cy.wait(3000)
-        cy.get('#SPVM2 > .MuiFormControlLabel-label > .MuiGrid-root > .MuiTypography-root').click()
+        cy.spvmFree()
     });
 
     it('Click on the RUN button', () => {

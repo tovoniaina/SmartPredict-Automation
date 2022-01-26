@@ -34,7 +34,7 @@ describe('Running Image classification use case project', () => {
 
     it('Choose resources templates', () => {
         cy.wait(2000)
-        cy.get('#SPVM2 > .MuiFormControlLabel-label > .MuiGrid-root > .MuiTypography-root').click() //Choosing SPVM2 to run the project 
+        cy.spvmFree()
     });
 
     it('Click the RUN button', () => {

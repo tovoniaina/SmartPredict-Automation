@@ -35,7 +35,7 @@ describe('Run Speech to Text use case', () => {
 
     it('Choose a resources templates', () => {
         cy.wait(2000)
-        cy.get('#SPVM2 > .MuiFormControlLabel-label > .MuiGrid-root > .MuiTypography-root').click()
+        cy.spvmFree()
     });
 
     it('Click on RUN button', () => {
