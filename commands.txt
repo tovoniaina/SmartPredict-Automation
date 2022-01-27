@@ -3,10 +3,8 @@ Command Allure
 allure serve allure-results
 allure generate allure-report
 npx cypress run --env allure=true
-npx cypress run --record --key c93cd6f8-0232-400b-92de-5d2584dd5be1
+npx cypress run --record --key e2c1e7d2-ea07-409e-85c9-ba65584d21e2
 npx cypress run --spec "cypress/integration/1.Use cases/ccfd.spec.js"
-Cypress dashboard invitation link: = https://dashboard.cypress.io/invitation/5b652791-300c-409c-98f4-81aaf57737bd 
-
 
 cypress/base:10
 
